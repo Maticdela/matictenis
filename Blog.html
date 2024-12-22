@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="icon" href="../images/favicon (1)/favicon-72x72.png" type="image/x-icon">
+  <style>
+    body.blog {
+      color: white;
+    }
+
+    body.blog a {
+      color: white;
+      text-decoration: none;
+    }
+
+    body.blog a:hover {
+      text-decoration: underline;
+    }
+
+    .blog-posts {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      margin: 20px 0;
+    }
+
+    .blog-post {
+      background-color: rgba(255, 146, 28, 0.8); /* Transparent primary color */
+      border-radius: 10px;
+      padding: 20px;
+    }
+
+    .blog-post h2 {
+      margin-top: 0;
+      color: white;
+    }
+
+    .blog-post p {
+      margin: 10px 0;
+    }
+
+    .blog-post a.read-more {
+      color: white;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body class="blog">
+    
+    <header>
+        <div class="logo">
+            <a href="../index.html">
+                <img src="../images/matictenis-logo.png" alt="Matic Tennis Coaching Logo">
+            </a>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="../index.html">Domov</a></li>
+                <li><a href="Storitve.html">Storitve</a></li>
+                <li><a href="Kontakt.html">Kontakt</a></li>
+                <li><a href="Cenik.html">Cenik</a></li>
+                <li><a href="Blog.html" class="active">Blog</a></li>
+                <li><a href="Termini.html">Termini</a></li>
+                <li><a href="Video_Nasveti.html">Video Nasveti</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="content">
+            <h1>Blog</h1>
+            <p>Beri naše najnovejše članke in nasvete o tenisu.</p>
+            <div class="blog-posts">
+                <div class="blog-post">
+                    <h2>Kako izboljšati svoj servis</h2>
+                    <p>Ali si želite osvojiti močnejši in natančnejši servis? Tukaj so trije ključni nasveti...</p>
+                    <a href="#" class="read-more">Preberi več</a>
+                </div>
+                <div class="blog-post">
+                    <h2>Top 5 vaj za boljšo gibljivost</h2>
+                    <p>Gibljivost je ključnega pomena za uspeh v tenisu. Preizkusite te vaje za hitre rezultate...</p>
+                    <a href="#" class="read-more">Preberi več</a>
+                </div>
+                <div class="blog-post">
+                    <h2>Izbira prave opreme za začetnike</h2>
+                    <p>Če ste novi v tenisu, je izbira prave opreme ključna. Tukaj je vodnik za začetnike...</p>
+                    <a href="#" class="read-more">Preberi več</a>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>© 2024 Matic Tennis Coaching. All rights reserved.</p>
+    </footer>
+    <script src="../js/script.js"></script>
+</body>
+</html>

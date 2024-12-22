@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kontakt</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="icon" href="../images/favicon (1)/favicon-72x72.png" type="image/x-icon">
+  <style>
+    body.kontakt {
+      color: rgb(255, 255, 255);
+      font-family: Arial, sans-serif;
+      background-color: #1f1f1f;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 3rem;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin: 40px 0;
+      border: 4px solid black;
+      padding: 10px 20px;
+      border: none;
+    }
+
+    .contact-info {
+      text-align: center;
+      margin: 20px 0;
+    }
+
+    .contact-info p {
+      font-size: 1.2rem;
+      margin: 10px 0;
+    }
+
+    .contact-form {
+      max-width: 600px;
+      margin: 0 auto;
+      background-color: rgba(0, 0, 0, 0.7);
+      padding: 20px;
+      border-radius: 10px;
+    }
+
+    .contact-form label {
+      display: block;
+      margin: 10px 0 5px;
+      font-weight: bold;
+    }
+
+    .contact-form input, .contact-form select, .contact-form textarea {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 5px;
+      border: 2px solid #ECA427;
+      background-color: #333;
+      color: white;
+    }
+
+    .contact-form textarea {
+      height: 150px;
+    }
+
+    .submit-btn {
+      background-color: #FF921C;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      font-size: 1.2rem;
+      cursor: pointer;
+    }
+
+    .submit-btn:hover {
+      background-color: #ECA427;
+    }
+
+    /* Responsive design for smaller screens */
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2.5rem;
+      }
+
+      .contact-form {
+        width: 90%;
+      }
+    }
+
+    /* Map styling */
+    .map-container {
+      margin: 40px 0;
+    }
+
+    iframe {
+      width: 100%;
+      height: 400px;
+      border: 0;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+<body class="kontakt">
+    <header>
+        <div class="logo">
+            <a href="../index.html">
+                <img src="../images/matictenis-logo.png" alt="Matic Tennis Coaching Logo">
+            </a>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="../index.html">Domov</a></li>
+                <li><a href="Storitve.html">Storitve</a></li>
+                <li><a href="Kontakt.html" class="active">Kontakt</a></li>
+                <li><a href="Cenik.html">Cenik</a></li>
+                <li><a href="Blog.html">Blog</a></li>
+                <li><a href="Termini.html">Termini</a></li>
+                <li><a href="Video_Nasveti.html">Video Nasveti</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="contact-info">
+            <h1>Kontakt</h1>
+            <p>E-mail: matic.drempeticsp@gmail.com</p>
+            <p>Telefon: +386 40 188 985</p>
+            <p>Ime: Matic Drempetič</p>
+            <p>Lokacija: Ljubljana, Slovenija</p>
+        </section>
+
+        <section class="contact-form">
+            <h2>Pošljite sporočilo</h2>
+            <form action="#" method="post">
+                <label for="name">Ime</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="contact">Tel. Številka / E-mail</label>
+                <input type="text" id="contact" name="contact" required>
+
+                <label for="service">Izberite storitev</label>
+                <select id="service" name="service" required>
+                    <option value="Individualni trening">Individualni trening</option>
+                    <option value="Skupinski trening">Skupinski trening</option>
+                    <option value="Tenis šola za otroke">Tenis šola za otroke</option>
+                    <option value="Sparing">Sparing</option>
+                    <option value="Drugo">Drugo</option>
+                </select>
+
+                <label for="message">Dodatno sporočilo</label>
+                <textarea id="message" name="message" required></textarea>
+
+                <button type="submit" class="submit-btn">Pošlji</button>
+            </form>
+        </section>
+
+        
+    <footer>
+        <p>© 2024 Matic Tennis Coaching. All rights reserved.</p>
+    </footer>
+    <script src="../js/script.js"></script>
+</body>
+</html>

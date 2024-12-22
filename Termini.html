@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Termini</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="icon" href="../images/favicon (1)/favicon-72x72.png" type="image/x-icon">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.2.0/fullcalendar.min.css" rel="stylesheet" />
+  <style>
+    .reservation-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .reservation-form {
+      background-color: white;
+      padding: 20px;
+      border-radius: 8px;
+      width: 300px;
+      text-align: left;
+    }
+
+    .reservation-form h3 {
+      text-align: center;
+      font-weight: bold;
+      color: black;
+    }
+
+    .form-field {
+      margin-bottom: 15px;
+    }
+
+    .form-field label {
+      display: block;
+      font-weight: bold;
+    }
+
+    .form-field input,
+    .form-field select {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    .form-actions {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 20px;
+    }
+
+    .form-actions button {
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .confirm-button {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+    }
+
+    .cancel-button {
+      background-color: #f44336;
+      color: white;
+      border: none;
+    }
+  </style>
+</head>
+<body class="termini">
+  <header>
+    <div class="logo">
+      <a href="../index.html">
+        <img src="../images/matictenis-logo.png" alt="Matic Tennis Coaching Logo">
+      </a>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="../index.html">Domov</a></li>
+        <li><a href="Storitve.html">Storitve</a></li>
+        <li><a href="Kontakt.html">Kontakt</a></li>
+        <li><a href="Cenik.html">Cenik</a></li>
+        <li><a href="Blog.html">Blog</a></li>
+        <li><a href="Termini.html" class="active">Termini</a></li>
+        <li><a href="Video_Nasveti.html">Video Nasveti</a></li>
+        <li><a href="Admin.html">Admin</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="content">
+      <h1>Termini</h1>
+      <p>Rezervirajte svoj termin za trening tenisa!</p>
+      <div class="calendar-container">
+        <div id="calendar"></div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Reservation Modal -->
+  <div class="reservation-modal" id="reservationModal">
+    <div class="reservation-form">
+      <h3>Potrdite svoj termin in kje ste rezervirali igrišče</h3>
+      <div class="form-field">
+        <label for="name">Ime in Priimek</label>
+        <input type="text" id="name" placeholder="Vnesite ime in priimek" required>
+      </div>
+      <div class="form-field">
+        <label for="phone">Telefonska Številka</label>
+        <input type="tel" id="phone" placeholder="Vnesite telefonsko številko" required>
+        <div class="form-field">
+            <label for="kraj">Kraj</label>
+            <select id="kraj" required>
+
+                <option value="atletski-stadion-tacen">Atletski stadion Tacen – Polje 30, 1000 Ljubljana</option>
+                <option value="bife-tenis-ruski-car">Bife Tenis - Ruski Car – Ruski Car 13, 1000 Ljubljana</option>
+                <option value="btc-letaliska-cesta">BTC Letališka cesta – Letališka cesta 29, 1000 Ljubljana</option>
+                <option value="cesta-dveh-cesarjev">Cesta dveh cesarjev – Cesta dveh cesarjev 91, 1000 Ljubljana</option>
+                <option value="cesta-v-rozno-dolino">Cesta v Rožno dolino – Cesta v Rožno dolino 4, 1000 Ljubljana</option>
+                <option value="dolenjska-cesta-105c">Dolenjska cesta 105c – Dolenjska cesta 105c, 1000 Ljubljana</option>
+                <option value="garazni-center-oziric">Garažni center Ožirič – Cesta dveh cesarjev 92, 1000 Ljubljana</option>
+                <option value="jaki-sport-ilirija">Jaki Šport Ilirija – Cesta v Gameljne 30, 1000 Ljubljana</option>
+                <option value="kajak-kanu-klub-tacen">Kajak Kanu Klub Tacen – Tacen 25, 1000 Ljubljana</option>
+                <option value="kašeljska-cesta">Kašeljska cesta – Kašeljska cesta 104, 1000 Ljubljana</option>
+                <option value="konex-center">Konex Center – Cesta v Mestni log 15, 1000 Ljubljana</option>
+                <option value="max-tenis-club">Max Tenis Club – Cesta na Brdo 85, 1000 Ljubljana</option>
+                <option value="medno-55">Medno 55 – Medno 55, 1000 Ljubljana</option>
+                <option value="mladinska-ulica">Mladinska ulica – Mladinska ulica 16, 1000 Ljubljana</option>
+                <option value="park-rudnik-murgle-i">Park Rudnik - Murgle I – Cesta dveh cesarjev 91, 1000 Ljubljana</option>
+                <option value="park-rudnik-murgle-ii">Park Rudnik - Murgle II – Cesta dveh cesarjev 91, 1000 Ljubljana</option>
+                <option value="poljska-pot">Poljska pot – Poljska pot 3, 1000 Ljubljana</option>
+                <option value="sc-club-novi-src">ŠC Club Novi ŠRC – Dolgi Most 2, 1000 Ljubljana</option>
+                <option value="sc-millenium-btc">ŠC Millenium BTC – Šmartinska cesta 152, 1000 Ljubljana</option>
+                <option value="smartinska-154">Šmartinska 154 – Šmartinska cesta 154, 1000 Ljubljana</option>
+                <option value="smartno-80">Šmartno 80 – Šmartno 80, 1000 Ljubljana</option>
+                <option value="sportni-center-gradiant">Športni center Gradiant – Ulica Lipa 15, 1000 Ljubljana</option>
+                <option value="sportni-center-millenium-btc">Športni center Millenium BTC – Šmartinska cesta 152, 1000 Ljubljana</option>
+                <option value="sportno-drustvo-alfa">Športno društvo Alfa – Jarška cesta 1, 1000 Ljubljana</option>
+                <option value="sportno-drustvo-partizan-vic">Športno društvo Partizan Vič – Ulica 27. aprila 22, 1000 Ljubljana</option>
+                <option value="sportno-drustvo-partizan-crnuce">Športno društvo Partizan Črnuče – Črnuče 9, 1000 Ljubljana</option>
+                <option value="sportno-drustvo-sostro">Športno društvo Sostro – Cesta na Sostro 17, 1000 Ljubljana</option>
+                <option value="sportni-park-ljubljana">Športni park Ljubljana – Milčinskega 2, 1000 Ljubljana</option>
+                <option value="sportni-park-tivoli">Športni park Tivoli – Tivoli, 1000 Ljubljana</option>
+                <option value="sr-gradb-geodetska-in-ekon-sola-lj">Sr. gradb., geodetska in ekon. šola Lj – Barjanska cesta 32, 1000 Ljubljana</option>
+                <option value="stanezice">Stanežiče – Stanežiče 47, 1000 Ljubljana</option>
+                <option value="tenis-academy-breskvar">Tenis Academy Breskvar – Tesovnikova ulica 74c, 1000 Ljubljana</option>
+                <option value="tenis-breskvar">Tenis Breskvar – Tesovnikova ulica 74c, 1000 Ljubljana</option>
+                <option value="tenis-center-ljubljana">Tenis center Ljubljana (ŽAK) – Linhartova cesta 25, Ljubljana</option>
+                <option value="tenis-center-svoboda">Tenis center Svoboda – Riharjeva cesta 6, Ljubljana</option>
+                <option value="tenis-center-tivoli">Tenis center Tivoli – Krajinski park Tivoli, Ljubljana</option>
+                <option value="tenis-klub-atomica">Tenis klub Atomica – Cesta na Brdo 85, 1000 Ljubljana</option>
+                <option value="tenis-klub-center-court">Tenis klub Center Court – Brnčičeva ulica 13, Ljubljana</option>
+                <option value="tenis-klub-olimpija">Tenis klub Olimpija – Šlandrova ulica 11, Ljubljana</option>
+                <option value="tenis-klub-rival">Teniški klub Rival – Litostrojska 47, 1000 Ljubljana</option>
+                <option value="teniski-center-benc-sport">Teniški center Benč Sport – Dunajska cesta 202, Ljubljana</option>
+                <option value="teniski-klub-net-sport">Teniški klub Net Sport – Velika Čolnarska ulica 20, Ljubljana</option>
+                <option value="teniski-klub-schweiger">Teniški klub Schweiger – Cesta v Zgornji Log 32, Ljubljana</option>
+                <option value="teniski-klub-schweiger">Teniški klub Schweiger – Cesta v Zgornji Log 32, Ljubljana</option>
+                <option value="tk-gibisport">TK GibiŠport – Dunajska cesta 161, 1000 Ljubljana</option>
+                <option value="tk-svoboda">TK Svoboda – Riharjeva cesta 6, 1000 Ljubljana</option>
+                <option value="ts-benc-sport">TŠ Benč Sport – Dunajska cesta 202, 1000 Ljubljana</option>
+                <option value="ulica-27-aprila">Ulica 27. aprila – Ulica 27. aprila 14, 1000 Ljubljana</option>
+                <option value="vidiceva-ulica">Vidičeva ulica – Vidičeva ulica 5, 1000 Ljubljana</option>
+                <option value="veslaski-klub-ljubljanica">Veslaški klub Ljubljanica – Cesta dveh cesarjev 83, 1000 Ljubljana</option>
+                <option value="vsi-park-ljubljana">VSI park Ljubljana – Location info</option>
+
+
+            </select>
+        </div>
+
+        <div class="form-field">
+            <label for="date">Date</label>
+            <input type="date" id="date" placeholder="Izberite datum" required>
+          
+          
+        
+              <!-- Dynamically populated with JavaScript -->
+            </select>
+          </div>  
+    </div>
+      <div class="form-field">
+        <label for="time">Izberite čas</label>
+        <select id="time">
+            <option value="08:00">08:00</option>
+            <option value="08:30">08:30</option>
+            <option value="09:00">09:00</option>
+            <option value="09:30">09:30</option>
+            <option value="10:00">10:00</option>
+            <option value="10:30">10:30</option>
+            <option value="11:00">11:00</option>
+            <option value="11:30">11:30</option>
+            <option value="12:00">12:00</option>
+            <option value="12:30">12:30</option>
+            <option value="13:00">13:00</option>
+            <option value="13:30">13:30</option>
+            <option value="14:00">14:00</option>
+            <option value="14:30">14:30</option>
+            <option value="15:00">15:00</option>
+            <option value="15:30">15:30</option>
+            <option value="16:00">16:00</option>
+            <option value="16:30">16:30</option>
+            <option value="17:00">17:00</option>
+            <option value="17:30">17:30</option>
+            <option value="18:00">18:00</option>
+            <option value="18:30">18:30</option>
+            <option value="19:00">19:00</option>
+            <option value="19:30">19:30</option>
+            <option value="20:00">20:00</option>
+        </select>
+      </div>
+
+      <div class="form-actions">
+        <button class="confirm-button" onclick="submitReservation()">Potrdi</button>
+        <button class="cancel-button" onclick="closeModal()">Prekliči</button>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>© 2024 Matic Tennis Coaching. Vse pravice pridržane.</p>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.2.0/fullcalendar.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      const today = moment();
+      const twoMonthsLater = today.clone().add(2, 'months');
+
+      $('#calendar').fullCalendar({
+        defaultView: 'month',
+        header: {
+          left: 'prev,next today',
+          center: 'title',
+        },
+        locale: 'sl',
+        minDate: today.format('YYYY-MM-DD'),
+        maxDate: twoMonthsLater.format('YYYY-MM-DD'),
+        events: JSON.parse(localStorage.getItem('reservedSlots') || '[]'),
+        selectable: true,
+        selectHelper: true,
+        select: function(start, end) {
+          openModal(start, end);
+        },
+        editable: true,
+        eventClick: function(event) {
+          alert('Rezervacija: ' + event.title + '\nTelefon: ' + event.phone + '\nTermin: ' + event.start.format('YYYY-MM-DD HH:mm'));
+        }
+      });
+    });
+
+    function openModal(start, end) {
+      const modal = document.getElementById('reservationModal');
+      modal.style.display = 'flex';
+
+      window.currentEventStart = start;
+      window.currentEventEnd = end;
+    }
+
+    function closeModal() {
+      const modal = document.getElementById('reservationModal');
+      modal.style.display = 'none';
+    }
+
+    function submitReservation() {
+      const name = document.getElementById('name').value;
+      const phone = document.getElementById('phone').value;
+      const time = document.getElementById('time').value;
+
+      if (name && phone && time) {
+        const eventData = {
+          title: name.split(' ')[1], // Priimek kot naslov
+          start: window.currentEventStart.toISOString(),
+          end: window.currentEventEnd.toISOString(),
+          phone: phone,
+          time: time
+        };
+
+        let events = JSON.parse(localStorage.getItem('reservedSlots') || '[]');
+        events.push(eventData);
+        localStorage.setItem('reservedSlots', JSON.stringify(events));
+
+        alert('Rezervacija uspešna!');
+        closeModal();
+      } else {
+        alert('Prosimo izpolnite vsa polja.');
+      }
+    }
+    
+  </script>
+</body>
+</html>
