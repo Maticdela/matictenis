@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - Matic Tennis Coaching</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="icon" href="../images/favicon (1)/favicon-72x72.png" type="image/x-icon">
+    <style>
+        /* Modal background */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.4); /* Black with opacity */
+        }
+
+        /* Modal content */
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 400px;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+        }
+
+        /* Close button */
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        /* Form styles */
+        .password-form input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .password-form button {
+            padding: 10px 20px;
+            background-color: #FF921C;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .password-form button:hover {
+            background-color: #ECA427;
+        }
+    </style>
+</head>
+<body class="admin-panel">
+
+    <header>
+        <div class="logo">
+            <a href="../index.html">
+                <img src="../images/matictenis-logo.png" alt="Matic Tennis Coaching Logo">
+            </a>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="../index.html">Domov</a></li>
+                <li><a href="admin.html" class="active">Admin Panel</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Modal for Admin Login -->
+    <div id="adminModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Admin Login</h2>
+            <form id="passwordForm" class="password-form">
+                <input type="password" id="adminPassword" placeholder="Enter admin password" required>
+                <button type="submit">Login</button>
+            </form>
+        </div>
+    </div>
+
+    <main>
+        <section class="content">
+            <h1>Admin Panel</h1>
+            <h2>Manage Reservations</h2>
+            <button onclick="loadReservations()">Load Reservations</button>
+            <ul id="reservations-list"></ul>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2024 Matic Tennis Coaching. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Modal functionality
+        const modal = document.getElementById('adminModal');
+        const closeModal = document.getElementsByClassName('close')[0];
+        const passwordForm = document.getElementById('passwordForm');
+
+        // Show the modal when the page loads
+        window.onload = function() {
+            modal.style.display = "block";
+        }
+
+        // Close the modal when the user clicks on the close button
+        closeModal.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        // Close the modal if the user clicks outside of the modal content
+        window.onclick = function(event) {
+            if (event.target === modal) {
+                modal.style.display = "none";
+            }
+        }
+
+        // Handle password submission
+        passwordForm.onsubmit = function(event) {
+            event.preventDefault(); // Prevent the form from submitting
+
+            const enteredPassword = document.getElementById('adminPassword').value;
+            const adminPassword = 'adminpassword'; // Change this to a secure password
+
+            if (enteredPassword === adminPassword) {
+                modal.style.display = "none"; // Hide the modal
+                loadReservations(); // Proceed to load reservations
+            } else {
+                alert('Incorrect password');
+            }
+        }
+
+        // Load all reservations from localStorage
+        function loadReservations() {
+            const reservedSlots = JSON.parse(localStorage.getItem('reservedSlots') || '[]');
+            const reservationsList = document.getElementById('reservations-list');
+            reservationsList.innerHTML = ''; // Clear the list before adding new entries
+
+            reservedSlots.forEach((slot, index) => {
+                const listItem = document.createElement('li');
+                const formattedDate = moment(slot.start).format('YYYY-MM-DD HH:mm'); // Format the date
+
+                listItem.textContent = `Reservation: ${slot.title} | Phone: ${slot.phone} | Date: ${formattedDate}`;
+                
+                // Add a delete button for each reservation
+                const deleteButton = document.createElement('button');
+                deleteButton.textContent = 'Delete';
+                deleteButton.onclick = function() {
+                    if (confirm(`Are you sure you want to delete reservation for ${slot.title}?`)) {
+                        deleteReservation(index);
+                    }
+                };
+                
+                listItem.appendChild(deleteButton);
+                reservationsList.appendChild(listItem);
+            });
+        }
+
+        // Function to delete a reservation from localStorage
+        function deleteReservation(index) {
+            const reservedSlots = JSON.parse(localStorage.getItem('reservedSlots') || '[]');
+            reservedSlots.splice(index, 1); // Remove the reservation
+            localStorage.setItem('reservedSlots', JSON.stringify(reservedSlots)); // Save back to localStorage
+            loadReservations(); // Refresh the list after deletion
+        }
+    </script>
+</body>
+</html>
